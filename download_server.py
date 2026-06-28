@@ -43,19 +43,23 @@ def ping_search_engines():
     """主动 ping 搜索引擎，让它们最快收录"""
     import urllib.request
     import urllib.parse
-    url = "https://query-dividend-transparent-nominated.trycloudflare.com/index.html"
+    url = "https://palmer-benz-col-jim.trycloudflare.com/index.html"
     results = {}
-    # Bing
+    # IndexNow (Bing/Yandex/Naver 兼容) —— 24h 内只推送 1 次
+    # 读 EVENTS.jsonl 检查上次 ping 时间
+    last_ping = None
+    if EVENTS_FILE.exists():
+        with open(EVENTS_FILE) as f:
+            for line in f:
+                try:
+                    rec = json.loads(line)
+                    if rec.get("event") == "seo_ping":
+                        last_ping = datetime.fromisoformat(rec["ts"])
+                except Exception:
+                    pass
+    if last_ping and (datetime.now() - last_ping).total_seconds() < 86400:
+        return {"indexnow": "skipped (already pinged within 24h)"}
     try:
-        ping_url = f"https://www.bing.com/ping?sitemap={urllib.parse.quote('https://query-dividend-transparent-nominated.trycloudflare.com/sitemap.xml')}"
-        req = urllib.request.Request(ping_url, headers={"User-Agent": "PromptDrop/1.0"})
-        with urllib.request.urlopen(req, timeout=10) as r:
-            results["bing"] = r.status
-    except Exception as e:
-        results["bing"] = f"err: {e}"
-    # IndexNow (Bing/Yandex/Google 兼容)
-    try:
-        # 准备一个 indexnow key（这里用一个固定的，方便复现）
         idx_key = "promptdrop2024"
         idx_url = f"https://api.indexnow.org/indexnow?url={urllib.parse.quote(url)}&key={idx_key}"
         req = urllib.request.Request(idx_url, headers={"User-Agent": "PromptDrop/1.0"})
@@ -179,7 +183,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             # 返回 SEO 元数据（方便外部工具抓取）
             meta = {
                 "site": "PromptDrop",
-                "url": "https://query-dividend-transparent-nominated.trycloudflare.com",
+                "url": "https://palmer-benz-col-jim.trycloudflare.com",
                 "title": "PromptDrop — 即买即用的 AI 提效模板小店",
                 "description": "9.9 元起，把 3 小时调好的 Prompt 模板带回家",
                 "keywords": ["AI prompt", "小红书爆款", "跨境选品", "周报生成", "面试", "论文降重"],

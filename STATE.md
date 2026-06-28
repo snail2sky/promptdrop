@@ -6,18 +6,21 @@
 
 | 版本 | URL | 端口 | 状态 | 说明 |
 |------|------|------|------|------|
-| **v4 ✅** | https://obituaries-invest-hose-trend.trycloudflare.com | 8770 | 200 | **主用** · 最新代码 · SEO + 埋点 |
-| v3 | https://overhead-sage-pierre-inflation.trycloudflare.com | 8769 | 200 | 备选 |
-| v2 | https://she-influences-sys-paintings.trycloudflare.com | 8768 | 200 | 备选 |
+| **v5 ✅** | https://query-dividend-transparent-nominated.trycloudflare.com | 8771 | 200 | **主用** · JSON-LD + IndexNow + SEO 完整 |
+| v4 | https://obituaries-invest-hose-trend.trycloudflare.com | 8770 | 200 | 备选 · robots/sitemap |
+| v3 | https://overhead-sage-pierre-inflation.trycloudflare.com | 8769 | 200 | 备选 · 埋点 |
+| v2 | https://she-influences-sys-paintings.trycloudflare.com | 8768 | 200 | 备选 · track/stats |
 | v1 | https://obligation-cape-luis-rows.trycloudflare.com | 8765 | 200 | 旧版 |
 
-**主推链接**：`https://obituaries-invest-hose-trend.trycloudflare.com`
+**主推链接**：`https://query-dividend-transparent-nominated.trycloudflare.com`
 
 ## 数据接口
 
 - Health: `GET /health`
 - Stats: `GET /api/stats`（事件/订单/GMV 汇总）
 - Track: `POST /api/track`（埋点）
+- Ping: `GET /api/ping`（主动推送 IndexNow）
+- SEO-Meta: `GET /api/seo-meta`
 - Robots: `GET /robots.txt`
 - Sitemap: `GET /sitemap.xml`
 
@@ -29,4 +32,5 @@
 | 2026-06-28T23:05:00+08:00 | OK | 加入 /api/track 与 /api/stats |
 | 2026-06-28T23:07:00+08:00 | OK | 公网 v3 上线，埋点验证 |
 | 2026-06-28T23:09:00+08:00 | OK | 公网 v4 上线，SEO 完整 |
+| 2026-06-28T23:12:00+08:00 | OK | 公网 v5 上线，IndexNow 推送 202 |
 | {{AUTO}} | {{AUTO}} | {{AUTO}} |

@@ -158,7 +158,7 @@ urllib.request.urlopen(idx_url)
 
 ## 十、源码与体验
 
-🌐 在线体验：[query-dividend-transparent-nominated.trycloudflare.com](https://query-dividend-transparent-nominated.trycloudflare.com)
+🌐 在线体验：[palmer-benz-col-jim.trycloudflare.com](https://palmer-benz-col-jim.trycloudflare.com)
 📦 源码（含 README/ROADMAP/BDD）：[github.com/snail2sky/promptdrop](https://github.com/snail2sky/promptdrop)
 
 欢迎 ⭐ Star + Fork 拿去用，MIT 协议，做类似的小店完全 OK。

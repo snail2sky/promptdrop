@@ -2,7 +2,7 @@
 
 > **9.9 元起，把 3 小时调好的 AI 模板带回家。付款即下载，秒级交付。**
 
-🌐 **在线访问**：[query-dividend-transparent-nominated.trycloudflare.com](https://query-dividend-transparent-nominated.trycloudflare.com)
+🌐 **在线访问**：[palmer-benz-col-jim.trycloudflare.com](https://palmer-benz-col-jim.trycloudflare.com)
 📦 **GitHub**：[github.com/snail2sky/promptdrop](https://github.com/snail2sky/promptdrop)
 
 ---

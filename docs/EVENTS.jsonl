@@ -2,3 +2,6 @@
 {"ts": "2026-06-28T23:06:45.674736", "event": "first_public_ping", "msg": "main agent alive"}
 {"ts": 1782659278994, "event": "pageview_landing", "ref": "", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrom"}
 {"ts": "2026-06-28T23:13:15.973213", "event": "seo_ping", "results": {"bing": "err: HTTP Error 410: Gone", "indexnow": 202}}
+{"ts": "2026-06-28T23:14:59.625310", "event": "seo_ping", "results": {"bing": "err: HTTP Error 410: Gone", "indexnow": "err: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>"}}
+{"ts": "2026-06-28T23:15:56.938912", "event": "seo_ping", "results": {"indexnow": "skipped (already pinged within 24h)"}}
+{"ts": "2026-06-28T23:15:58.210960", "event": "seo_ping", "results": {"indexnow": "skipped (already pinged within 24h)"}}
