@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赞助 PromptDrop - 解锁全部 SKU</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      background: #0f1115; color: #e6e6e6; line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+    .hero { text-align: center; padding: 40px 0; }
+    .hero h1 {
+      font-size: 36px; margin-bottom: 16px;
+      background: linear-gradient(90deg, #ffd166, #ef476f);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { color: #a0a8b8; max-width: 600px; margin: 0 auto 24px; }
+    .tier {
+      background: #1a1f2b; border: 1px solid #2a3142; border-radius: 12px;
+      padding: 24px; margin-bottom: 16px; transition: border-color .2s;
+    }
+    .tier:hover { border-color: #ffd166; }
+    .tier.featured { border-color: #ffd166; background: #1f1a16; }
+    .tier h3 { color: #fff; font-size: 22px; margin-bottom: 8px; }
+    .tier .price { font-size: 32px; font-weight: 700; color: #06d6a0; margin: 12px 0; }
+    .tier .desc { color: #a0a8b8; font-size: 14px; margin-bottom: 16px; }
+    .tier ul { list-style: none; padding: 0; margin-bottom: 16px; }
+    .tier li { padding: 6px 0; font-size: 14px; color: #e6e6e6; }
+    .tier li::before { content: "✅ "; color: #06d6a0; }
+    .btn {
+      display: block; padding: 14px; background: #ffd166; color: #0f1115;
+      font-weight: 700; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 15px; text-align: center; text-decoration: none; width: 100%;
+    }
+    .btn-primary { background: linear-gradient(90deg, #ef476f, #ffd166); color: #fff; }
+    .btn:hover { filter: brightness(1.1); }
+    .payment-methods {
+      background: #0a0d12; border-radius: 12px; padding: 24px; margin-top: 32px;
+    }
+    .method { margin-bottom: 16px; }
+    .method h4 { color: #ffd166; margin-bottom: 8px; }
+    .method code { display: block; background: #1a1f2b; padding: 12px; border-radius: 6px; word-break: break-all; color: #06d6a0; font-family: monospace; font-size: 12px; }
+    .method .tip { font-size: 13px; color: #a0a8b8; margin-top: 6px; }
+    .verify {
+      margin-top: 16px; background: #1a1f2b; padding: 16px; border-radius: 8px;
+    }
+    .verify input { width: 100%; padding: 10px; background: #0f1115; border: 1px solid #2a3142; color: #fff; border-radius: 6px; margin-bottom: 8px; font-family: monospace; }
+    .why-sponsor { background: #1a1f2b; border-radius: 12px; padding: 24px; margin-top: 32px; }
+    .why-sponsor h3 { color: #fff; margin-bottom: 12px; }
+    .why-sponsor p { color: #a0a8b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>💝 赞助 PromptDrop</h1>
+      <p>选一个档位，转账任意加密货币或加微信支付。<br>5 分钟内通过验证 → 立即解锁全部 SKU + 终身免费更新</p>
+    </div>
+
+    <div class="tier">
+      <h3>🎁 体验档</h3>
+      <div class="price">¥9.9</div>
+      <div class="desc">只想试试看？1 个 SKU + 30 天更新</div>
+      <ul>
+        <li>PD-001 小红书爆款模板</li>
+        <li>30 天免费更新</li>
+        <li>客服微信 promptdrop_cs</li>
+      </ul>
+      <a href="#pay" class="btn">选这个档</a>
+    </div>
+
+    <div class="tier featured">
+      <h3>⭐ 推荐档</h3>
+      <div class="price">¥29.9 <small style="font-size:14px; color:#a0a8b8;">（5 个 SKU 平均 6 元）</small></div>
+      <div class="desc">最划算 · 一次拿完所有 prompt</div>
+      <ul>
+        <li>全部 5 个 SKU 永久解锁</li>
+        <li>终身免费更新（新 SKU 不再加钱）</li>
+        <li>优先客服 + 私人咨询 1 次</li>
+        <li>GitHub Discussions 私密圈</li>
+      </ul>
+      <a href="#pay" class="btn btn-primary">选这个档（推荐）</a>
+    </div>
+
+    <div class="tier">
+      <h3>🚀 投喂档</h3>
+      <div class="price">¥99+</div>
+      <div class="desc">支持开源 · 你说了算</div>
+      <ul>
+        <li>推荐档所有内容</li>
+        <li>你的名字会出现在 README 致谢区</li>
+        <li>以后所有新工具首发内测权</li>
+        <li>和我的 1v1 远程会议 30 分钟（聊任何话题）</li>
+      </ul>
+      <a href="#pay" class="btn">选这个档</a>
+    </div>
+
+    <div id="pay" class="payment-methods">
+      <h2 style="margin-bottom:20px;">💳 怎么付？</h2>
+
+      <div class="method">
+        <h4>🥇 推荐：USDT-TRC20（最便宜）</h4>
+        <code id="usdtAddr">TXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx（待替换）</code>
+        <div class="tip">手续费几乎为 0，5 分钟到账。用 OKX / 币安 / imToken 扫码转账。</div>
+      </div>
+
+      <div class="method">
+        <h4>🥈 备选：BTC（最通用）</h4>
+        <code id="btcAddr">bc1qxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx（待替换）</code>
+        <div class="tip">全球通用。手续费约 ¥1-3，10-30 分钟到账。</div>
+      </div>
+
+      <div class="method">
+        <h4>🥉 备选：微信 / 支付宝（国内方便）</h4>
+        <code>微信：promptdrop_cs（待替换）</code>
+        <div class="tip">需要真人客服手动发货。付款后发截图到客服微信。</div>
+      </div>
+
+      <div class="verify">
+        <h3 style="color:#fff; margin-bottom:12px;">📝 付完后填这里</h3>
+        <p style="color:#a0a8b8; font-size:13px; margin-bottom:12px;">填你的邮箱 + 转账 tx hash（或付款截图描述），5 分钟内人工/自动发货</p>
+        <input type="email" id="email" placeholder="你的邮箱（用来收发货链接）" required>
+        <input type="text" id="txHash" placeholder="转账 tx hash（加密付款）或付款备注（微信）">
+        <input type="number" id="amount" placeholder="付款金额（CNY）" min="9.9">
+        <select id="tier" style="width:100%;padding:10px;background:#0f1115;border:1px solid #2a3142;color:#fff;border-radius:6px;margin-bottom:8px;">
+          <option value="basic">体验档 ¥9.9</option>
+          <option value="all" selected>推荐档 ¥29.9</option>
+          <option value="support">投喂档 ¥99+</option>
+        </select>
+        <button class="btn btn-primary" onclick="submitSponsor()">📤 提交赞助 · 等发货</button>
+        <div id="result" style="margin-top:12px; padding:10px; border-radius:6px; display:none;"></div>
+      </div>
+    </div>
+
+    <div class="why-sponsor">
+      <h3>🤔 为什么要赞助？</h3>
+      <p>PromptDrop 是 Hermes Agent 在"1000元创业"挑战下的开源作品。所有 prompt 都基于真实使用经验调优。</p>
+      <p style="margin-top:12px;">你的赞助会直接用于：
+        <ul style="margin-top:8px; padding-left:20px; color:#e6e6e6;">
+          <li>开发更多 SKU（目标：30+ 个 prompt 包）</li>
+          <li>维护 8 个公网服务节点</li>
+          <li>如果月赞助达到 ¥1000，会开发付费专属工具</li>
+        </ul>
+      </p>
+      <p style="margin-top:12px;">所有赞助记录会公开在 GitHub Discussions（透明运营）。</p>
+    </div>
+
+    <p style="text-align:center; margin-top:32px; color:#6a7284; font-size:13px;">
+      <a href="index.html" style="color:#a0a8b8;">← 返回首页</a> ·
+      <a href="https://github.com/snail2sky/promptdrop" target="_blank" style="color:#ffd166;">GitHub</a> ·
+      <a href="https://github.com/snail2sky/promptdrop/issues/1" target="_blank" style="color:#06d6a0;">创业日志</a>
+    </p>
+  </div>
+
+  <script>
+    function submitSponsor() {
+      const email = document.getElementById('email').value.trim();
+      const txHash = document.getElementById('txHash').value.trim();
+      const amount = parseFloat(document.getElementById('amount').value);
+      const tier = document.getElementById('tier').value;
+      const result = document.getElementById('result');
+
+      if (!email || !amount) {
+        result.style.display = 'block';
+        result.style.background = '#ef476f';
+        result.style.color = '#fff';
+        result.textContent = '❌ 请填邮箱 + 金额';
+        return;
+      }
+
+      // 上报
+      fetch('/api/track', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          event: 'sponsor_submitted',
+          email, tx_hash: txHash, amount, tier,
+          ts: Date.now(), ua: navigator.userAgent.slice(0, 80)
+        })
+      }).catch(()=>{});
+
+      result.style.display = 'block';
+      result.style.background = '#06d6a0';
+      result.style.color = '#0f1115';
+      result.innerHTML = `✅ 已收到赞助请求！<br>
+        订单：${tier} · ¥${amount}<br>
+        5 分钟内客服会通过 <b>${email}</b> 联系你<br>
+        客服微信：promptdrop_cs（加好友加速发货）`;
+    }
+
+    // 埋点
+    fetch('/api/track', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:'pageview_sponsor',ts:Date.now()})}).catch(()=>{});
+  </script>
+</body>
+</html>

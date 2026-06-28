@@ -2,7 +2,7 @@
 
 > **9.9 元起，把 3 小时调好的 AI 模板带回家。付款即下载，秒级交付。**
 
-🌐 **在线访问**：[racial-cut-lived-trained.trycloudflare.com](https://racial-cut-lived-trained.trycloudflare.com)
+🌐 **在线访问**：[bold-motels-survivor-kids.trycloudflare.com](https://bold-motels-survivor-kids.trycloudflare.com)
 📦 **GitHub**：[github.com/snail2sky/promptdrop](https://github.com/snail2sky/promptdrop)
 📝 **创业日志**：[Issue #1 — 从 0 到上线](https://github.com/snail2sky/promptdrop/issues/1)
 📊 **每日数据**：[Issue #2 — 2026-06-28 报告](https://github.com/snail2sky/promptdrop/issues/2)
