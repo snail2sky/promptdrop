@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptDrop — 即买即用的 AI 提效模板小店</title>
+  <meta name="description" content="9.9 元起，把 3 小时调好的 Prompt 模板带回家。小红书爆款、跨境选品、周报生成，付款即下载。">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: #0f1115;
+      color: #e6e6e6;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #1a2030 0%, #0f1115 60%);
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ffd166, #ef476f, #06d6a0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #a0a8b8;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+    .hero .stats {
+      display: inline-flex;
+      gap: 32px;
+      margin-top: 24px;
+      color: #8a92a4;
+      font-size: 14px;
+    }
+    .hero .stats b { color: #ffd166; font-size: 18px; }
+
+    /* SKU Grid */
+    .section { padding: 60px 0; }
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1a1f2b;
+      border: 1px solid #2a3142;
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform .2s, border-color .2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #ffd166;
+    }
+    .card .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: #2a3142;
+      color: #ffd166;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .card .desc {
+      font-size: 14px;
+      color: #a0a8b8;
+      margin-bottom: 16px;
+      min-height: 44px;
+    }
+    .card .price {
+      font-size: 28px;
+      font-weight: 700;
+      color: #06d6a0;
+      margin-bottom: 4px;
+    }
+    .card .price small {
+      font-size: 14px;
+      color: #6a7284;
+      text-decoration: line-through;
+      margin-left: 8px;
+      font-weight: 400;
+    }
+    .card .meta {
+      font-size: 12px;
+      color: #6a7284;
+      margin-bottom: 16px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #ffd166;
+      color: #0f1115;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      text-align: center;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn:hover { background: #ffdb80; }
+    .btn-primary {
+      background: linear-gradient(90deg, #ef476f, #ffd166);
+      color: #fff;
+    }
+    .btn-primary:hover { filter: brightness(1.1); }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .step {
+      text-align: center;
+    }
+    .step .num {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 50%;
+      background: #ffd166;
+      color: #0f1115;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    .step h4 { color: #fff; margin-bottom: 6px; }
+    .step p { font-size: 14px; color: #a0a8b8; }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: #6a7284;
+      font-size: 13px;
+      border-top: 1px solid #2a3142;
+      margin-top: 40px;
+    }
+    footer a { color: #ffd166; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 15px; }
+      .hero .stats { gap: 16px; font-size: 12px; }
+      .section h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <h1>PromptDrop</h1>
+      <p>9.9 元起，把 3 小时调好的 AI 模板带回家。付款即下载，秒级交付。</p>
+      <div class="stats">
+        <span><b>5</b> 精选模板</span>
+        <span><b>¥9.9</b> 起</span>
+        <span><b>10min</b> 交付</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skus">
+    <div class="container">
+      <h2>🔥 今日精选</h2>
+      <div class="grid" id="skuGrid">
+        <!-- 由 JS 渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: #0a0d12;">
+    <div class="container">
+      <h2>怎么买？</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h4>选模板</h4>
+          <p>挑一个最能解决你当下问题的 SKU</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h4>扫码付款</h4>
+          <p>微信/支付宝，9.9 元起，秒到账</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h4>截图给客服</h4>
+          <p>客服 10 分钟内确认并发送下载链接</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h4>即买即用</h4>
+          <p>立刻打开 Notion/网盘，开干</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 PromptDrop · 一人创业中 · 客服微信：<a href="#">promptdrop_cs</a> · <a href="#">发货说明</a></p>
+      <p style="margin-top: 8px;">本站为虚拟商品小店，售出后非质量问题不退换</p>
+    </div>
+  </footer>
+
+  <script>
+    // SKU 数据（v1 — 占位，真实内容在 prompts/ 目录）
+    const skus = [
+      {
+        id: 'PD-001',
+        tag: '🔥 爆款',
+        title: '小红书爆款标题 7 套模板',
+        desc: '一文搞定 7 种爆款标题套路，附完整 Prompt，可直接喂给 AI 生成。',
+        price: 9.9,
+        original: 29.9,
+        sold: 128,
+        file: 'prompts/pd-001-xiaohongshu-titles.md'
+      },
+      {
+        id: 'PD-002',
+        tag: '跨境',
+        title: '跨境选品调研 Prompt 包',
+        desc: '5 个场景化 Prompt：品类扫描、竞品拆解、利润测算、红海预警、爆款复制。',
+        price: 19.9,
+        original: 49.9,
+        sold: 56,
+        file: 'prompts/pd-002-cross-border.md'
+      },
+      {
+        id: 'PD-003',
+        tag: '办公',
+        title: '周报/OKR 自动生成器',
+        desc: '输入本周做了什么，AI 自动生成老板爱看的周报 + OKR 复盘。',
+        price: 9.9,
+        original: 24.9,
+        sold: 312,
+        file: 'prompts/pd-003-weekly-report.md'
+      },
+      {
+        id: 'PD-004',
+        tag: '求职',
+        title: '面试问题生成器（双向版）',
+        desc: 'HR 用：JD 一键生成结构化面试题；求职者用：公司+岗位一键预测 30 道真题。',
+        price: 14.9,
+        original: 39.9,
+        sold: 87,
+        file: 'prompts/pd-004-interview.md'
+      },
+      {
+        id: 'PD-005',
+        tag: '学术',
+        title: '论文降重+润色 Prompt 工具箱',
+        desc: '8 个细分场景 Prompt：降重、改写、扩写、缩写、润色、翻译、查重前自检、答辩稿。',
+        price: 29.9,
+        original: 79.9,
+        sold: 201,
+        file: 'prompts/pd-005-paper.md'
+      }
+    ];
+
+    const grid = document.getElementById('skuGrid');
+    grid.innerHTML = skus.map(s => `
+      <div class="card">
+        <span class="tag">${s.tag}</span>
+        <h3>${s.title}</h3>
+        <p class="desc">${s.desc}</p>
+        <div class="price">¥${s.price}<small>¥${s.original}</small></div>
+        <div class="meta">已售 ${s.sold} 份 · SKU: ${s.id}</div>
+        <a class="btn btn-primary" href="order.html?id=${s.id}&title=${encodeURIComponent(s.title)}&price=${s.price}">立即购买</a>
+      </div>
+    `).join('');
+  </script>
+</body>
+</html>

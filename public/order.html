@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下单 - PromptDrop</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      background: #0f1115;
+      color: #e6e6e6;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .box {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #1a1f2b;
+      border: 1px solid #2a3142;
+      border-radius: 12px;
+      padding: 32px;
+    }
+    h1 { font-size: 20px; margin-bottom: 16px; color: #fff; }
+    .summary {
+      background: #0f1115;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .summary .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .summary .row.total {
+      font-size: 20px;
+      font-weight: 700;
+      color: #06d6a0;
+      border-top: 1px solid #2a3142;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .qr {
+      width: 240px;
+      height: 240px;
+      margin: 16px auto;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+    .qr-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .qr-tabs button {
+      flex: 1;
+      padding: 10px;
+      background: #2a3142;
+      color: #a0a8b8;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .qr-tabs button.active {
+      background: #06d6a0;
+      color: #0f1115;
+      font-weight: 700;
+    }
+    .notice {
+      background: #2a3142;
+      border-left: 3px solid #ffd166;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #ffd166;
+      margin: 16px 0;
+    }
+    .notice b { color: #fff; }
+    .cs {
+      background: #06d6a0;
+      color: #0f1115;
+      padding: 12px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      color: #a0a8b8;
+      font-size: 13px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>📦 订单确认</h1>
+    <div class="summary" id="summary">加载中...</div>
+
+    <div class="qr-tabs">
+      <button class="active" onclick="showQR('wx', this)">微信支付</button>
+      <button onclick="showQR('alipay', this)">支付宝</button>
+    </div>
+
+    <div class="qr" id="qrArea">
+      <span id="qrTip">微信扫码支付</span>
+    </div>
+
+    <div class="notice">
+      <b>⚠️ 付款后请截图发送给客服</b><br>
+      客服会在 <b>10 分钟内</b>核实并发送下载链接<br>
+      订单号：<span id="orderId">--</span>
+    </div>
+
+    <div class="cs">
+      💬 客服微信：promptdrop_cs
+    </div>
+
+    <a href="index.html" class="back">← 返回商品列表</a>
+  </div>
+
+  <script>
+    // 解析 URL 参数
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id') || 'PD-001';
+    const title = params.get('title') || '小红书爆款标题 7 套模板';
+    const price = parseFloat(params.get('price') || '9.9');
+
+    // 生成订单号（时间戳后 6 位）
+    const orderId = String(Date.now()).slice(-6);
+    document.getElementById('orderId').textContent = orderId;
+
+    // 渲染订单
+    document.getElementById('summary').innerHTML = `
+      <div class="row"><span>商品</span><span>${decodeURIComponent(title)}</span></div>
+      <div class="row"><span>SKU</span><span>${id}</span></div>
+      <div class="row total"><span>应付</span><span>¥${price}</span></div>
+    `;
+
+    // 切换二维码（v1 用占位）
+    function showQR(type, btn) {
+      document.querySelectorAll('.qr-tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tip = type === 'wx' ? '微信扫码支付' : '支付宝扫码支付';
+      document.getElementById('qrTip').textContent = tip + '（v1 占位图）';
+    }
+
+    // 埋点：上报加购/订单
+    try {
+      console.log('[PromptDrop] 订单创建', { id, title, price, orderId, ts: Date.now() });
+      localStorage.setItem('pd_last_order', JSON.stringify({ id, title, price, orderId, ts: Date.now() }));
+    } catch (e) {}
+  </script>
+</body>
+</html>
