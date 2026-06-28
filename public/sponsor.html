@@ -87,7 +87,7 @@
 
     <div class="tier">
       <h3>🚀 投喂档</h3>
-      <div class="price">¥99+</div>
+      <div class="price">¥99 起 <small style="font-size:14px; color:#a0a8b8;">（建议 ¥199）</small></div>
       <div class="desc">支持开源 · 你说了算</div>
       <ul>
         <li>推荐档所有内容</li>
@@ -127,33 +127,33 @@
       </div>
 
       <div class="method" id="crypto">
-        <h4>🇨🇳 当前唯一通道：GitHub Issue 半手动</h4>
-        <code>📝 在 Issue 留言 → 客服私下发收款码 → 付款 → 发货</code>
+        <h4>🇨🇳 当前唯一通道：3 步搞定下单（不需要 GitHub 账号）</h4>
+        <code>📝 填表单 → 加客服微信 → 发收款码 → 付款 → 发货</code>
         <div class="tip">
-          <b>当前阶段</b>，中国大陆用户走半手动流程：
+          <b style="color:#06d6a0;">🟢 极简流程 · 全程 60 秒下单</b>
           <ol style="margin-top:8px; padding-left:20px;">
-            <li>打开 <a href="https://github.com/snail2sky/promptdrop/issues/new" target="_blank" style="color:#06d6a0;">新建 Issue</a>
-              <br><small style="color:#a0a8b8;">⚠️ 需要 GitHub 账号（没账号？<a href="https://github.com/signup" target="_blank">3 分钟免费注册</a>）</small>
+            <li><b>填下方表单</b>：选档位 + 留邮箱 + 留微信号</li>
+            <li><b>加客服微信</b>：<code style="background:#0f1115;color:#06d6a0;padding:2px 6px;border-radius:4px;">promptdrop_cs</code>
+              <br><small style="color:#a0a8b8;">（加好友时备注：购买 + 你填的邮箱，方便客服对单）</small>
             </li>
-            <li>标题写 <code>[购买] PD-001 你的邮箱</code></li>
-            <li>正文：邮箱 + 想要哪个 SKU + 微信（方便客服联系）</li>
-            <li>5 分钟内客服微信 <b>promptdrop_cs</b> 加你 → 发收款码</li>
-            <li>你付款 → 截图发客服 → 5 分钟内发货</li>
+            <li><b>客服发收款码</b> → 你扫码付款 → 客服发下载链接 → 完成！</li>
           </ol>
-          <b style="color:#ffd166;">支持支付宝口令红包 / 微信红包 / USDT（任何方式都行）</b>
-          <br><br>
-          <b style="color:#ef476f;">没 GitHub 账号？</b>
-          <a href="mailto:promptdrop@snail2sky.com?subject=[购买] PD-001&body=邮箱: %0A微信号: %0A想要的 SKU: " style="color:#06d6a0;">直接发邮件到 promptdrop@snail2sky.com</a>
-          （标题写 [购买] PD-XXX）
+          <div style="background:#0f1115; padding:12px; border-radius:8px; margin-top:12px;">
+            <b style="color:#ffd166;">⚠️ 没 GitHub 账号？没微信？</b>
+            <br><small>· 没 GitHub 账号 → <b style="color:#06d6a0;">完全不影响</b>，本通道不需要</small>
+            <br><small>· 没微信 → <a href="mailto:promptdrop@snail2sky.com?subject=[购买] PD-XXX&body=邮箱:%0A微信号:%0A想要的%20SKU:" style="color:#06d6a0;">直接发邮件到 promptdrop@snail2sky.com</a>（标题写 [购买] PD-XXX）</small>
+            <br><small>· 支持支付方式：微信 / 支付宝 / 支付宝口令红包 / USDT-TRC20（任何都行）</small>
+          </div>
         </div>
       </div>
 
-      <div class="verify">
-        <h3 style="color:#fff; margin-bottom:12px;">📝 付完后填这里</h3>
-        <p style="color:#a0a8b8; font-size:13px; margin-bottom:12px;">填你的邮箱 + 转账 tx hash（或付款截图描述），5 分钟内人工/自动发货</p>
-        <input type="email" id="email" placeholder="你的邮箱（用来收发货链接）" required>
-        <input type="text" id="txHash" placeholder="转账 tx hash（加密付款）或付款备注（微信）">
-        <input type="number" id="amount" placeholder="付款金额（CNY）" min="9.9">
+      <div class="verify" id="form">
+        <h3 style="color:#fff; margin-bottom:12px;">📝 第 1 步 · 先填这个（30 秒）</h3>
+        <p style="color:#ffd166; font-size:13px; margin-bottom:12px;">⚠️ <b>先填表单 → 再加客服微信</b>（顺序很重要，客服需要邮箱匹配订单）</p>
+        <input type="email" id="email" placeholder="① 你的邮箱（用来收发货链接）" required>
+        <input type="text" id="wechat" placeholder="② 你的微信号（客服会加你，必填）" required>
+        <input type="text" id="txHash" placeholder="③ 付款后填：tx hash（加密）或付款备注（微信）">
+        <input type="number" id="amount" placeholder="④ 付款金额（CNY）" min="9.9">
         <select id="tier" style="width:100%;padding:10px;background:#0f1115;border:1px solid #2a3142;color:#fff;border-radius:6px;margin-bottom:8px;">
           <option value="basic">体验档 ¥9.9</option>
           <option value="all" selected>推荐档 ¥29.9</option>
@@ -187,16 +187,17 @@
   <script>
     function submitSponsor() {
       const email = document.getElementById('email').value.trim();
+      const wechat = document.getElementById('wechat').value.trim();
       const txHash = document.getElementById('txHash').value.trim();
       const amount = parseFloat(document.getElementById('amount').value);
       const tier = document.getElementById('tier').value;
       const result = document.getElementById('result');
 
-      if (!email || !amount) {
+      if (!email || !wechat || !amount) {
         result.style.display = 'block';
         result.style.background = '#ef476f';
         result.style.color = '#fff';
-        result.textContent = '❌ 请填邮箱 + 金额';
+        result.textContent = '❌ 请填邮箱、微信号、金额（tx hash 付款后再填）';
         return;
       }
 
@@ -206,13 +207,13 @@
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           event: 'sponsor_submitted',
-          email, tx_hash: txHash, amount, tier,
+          email, wechat, tx_hash: txHash, amount, tier,
           ts: Date.now(), ua: navigator.userAgent.slice(0, 80)
         })
       }).catch(()=>{});
 
       // GitHub Pages fallback：用 mailto 兜底
-      const tierNames = {basic: '体验档 ¥9.9', all: '推荐档 ¥29.9', support: '投喂档 ¥99+'};
+      const tierNames = {basic: '体验档 ¥9.9', all: '推荐档 ¥29.9', support: '投喂档 ¥99+ (建议 ¥199)'};
       const subject = encodeURIComponent(`[PromptDrop 赞助] ${tierNames[tier] || tier}`);
       const body = encodeURIComponent(
 `Hi,
@@ -221,8 +222,9 @@
 
 档位: ${tierNames[tier] || tier}
 金额: ¥${amount}
-付款方式: ${txHash ? '加密货币（tx hash: ' + txHash + '）' : '微信/支付宝'}
+付款方式: ${txHash ? '加密货币（tx hash: ' + txHash + '）' : '微信/支付宝（待付）'}
 我的邮箱: ${email}
+我的微信号: ${wechat}
 付款时间: ${new Date().toISOString()}
 
 请尽快联系我发送下载链接，谢谢！
@@ -234,12 +236,12 @@
       result.style.display = 'block';
       result.style.background = '#06d6a0';
       result.style.color = '#0f1115';
-      result.innerHTML = `✅ 赞助请求已准备！<br>
-        <b>请立即点击下方按钮</b>，你的邮件客户端会自动打开并把信息发给我：<br><br>
-        <a href="${mailtoLink}" style="display:inline-block;background:#ffd166;color:#0f1115;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;margin-top:8px;">📧 打开邮件客户端发送</a><br><br>
+      result.innerHTML = `✅ 赞助请求已记录！<br>
+        <b>下一步</b>：加客服微信 <code style="background:#0f1115;color:#06d6a0;padding:2px 6px;border-radius:4px;">promptdrop_cs</code>（备注你的邮箱）<br>
+        <b>再下一步</b>：客服发收款码 → 你扫码付款 → 客服发下载链接<br><br>
         订单详情：${tierNames[tier] || tier} · ¥${amount}<br>
-        客服微信：promptdrop_cs（加好友加速发货）<br>
-        <small>如果没自动跳转，请手动发邮件到 promptdrop@snail2sky.com</small>`;
+        <a href="${mailtoLink}" style="display:inline-block;background:#ffd166;color:#0f1115;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;margin-top:8px;">📧 也可发邮件备份</a>
+        <br><small>如果没自动跳转，请手动发邮件到 promptdrop@snail2sky.com</small>`;
     }
 
     // 埋点（GitHub Pages 上 /api/track 不存在，会静默失败）
