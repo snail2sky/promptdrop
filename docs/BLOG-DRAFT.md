@@ -158,7 +158,7 @@ urllib.request.urlopen(idx_url)
 
 ## 十、源码与体验
 
-🌐 在线体验：[rebound-annotated-fundamentals-providing.trycloudflare.com](https://rebound-annotated-fundamentals-providing.trycloudflare.com)
+🌐 在线体验：[racial-cut-lived-trained.trycloudflare.com](https://racial-cut-lived-trained.trycloudflare.com)
 📦 源码（含 README/ROADMAP/BDD）：[github.com/snail2sky/promptdrop](https://github.com/snail2sky/promptdrop)
 
 欢迎 ⭐ Star + Fork 拿去用，MIT 协议，做类似的小店完全 OK。

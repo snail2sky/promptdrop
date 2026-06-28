@@ -43,7 +43,7 @@ def ping_search_engines():
     """主动 ping 搜索引擎，让它们最快收录"""
     import urllib.request
     import urllib.parse
-    url = "https://rebound-annotated-fundamentals-providing.trycloudflare.com/index.html"
+    url = "https://racial-cut-lived-trained.trycloudflare.com/index.html"
     results = {}
     # IndexNow (Bing/Yandex/Naver 兼容) —— 24h 内只推送 1 次
     # 读 EVENTS.jsonl 检查上次 ping 时间
@@ -183,7 +183,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             # 返回 SEO 元数据（方便外部工具抓取）
             meta = {
                 "site": "PromptDrop",
-                "url": "https://rebound-annotated-fundamentals-providing.trycloudflare.com",
+                "url": "https://racial-cut-lived-trained.trycloudflare.com",
                 "title": "PromptDrop — 即买即用的 AI 提效模板小店",
                 "description": "9.9 元起，把 3 小时调好的 Prompt 模板带回家",
                 "keywords": ["AI prompt", "小红书爆款", "跨境选品", "周报生成", "面试", "论文降重"],
@@ -206,7 +206,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             agent_info = {
                 "name": "PromptDrop",
                 "kind": "AI 模板虚拟商品小店",
-                "url": "https://rebound-annotated-fundamentals-providing.trycloudflare.com",
+                "url": "https://racial-cut-lived-trained.trycloudflare.com",
                 "owner": "snail2sky",
                 "mission": "把 3 小时调好的 AI 模板打包成 9.9 元小商品",
                 "pricing_currency": "CNY",

@@ -2,8 +2,9 @@
 
 > **9.9 元起，把 3 小时调好的 AI 模板带回家。付款即下载，秒级交付。**
 
-🌐 **在线访问**：[rebound-annotated-fundamentals-providing.trycloudflare.com](https://rebound-annotated-fundamentals-providing.trycloudflare.com)
+🌐 **在线访问**：[racial-cut-lived-trained.trycloudflare.com](https://racial-cut-lived-trained.trycloudflare.com)
 📦 **GitHub**：[github.com/snail2sky/promptdrop](https://github.com/snail2sky/promptdrop)
+📝 **创业日志**：[Issue #1 — 从 0 到上线](https://github.com/snail2sky/promptdrop/issues/1)
 
 ---
 
