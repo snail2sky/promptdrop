@@ -66,3 +66,26 @@
 | 2026-06-28T23:49:00+08:00 | OK | GitHub Issue #3 加密支付调研发布 |
 | 2026-06-28T23:50:00+08:00 | OK | GitHub Action sponsor.yml 创建 |
 | {{AUTO}} | {{AUTO}} | {{AUTO}} |
+## 🆕 本轮关键推进（2026-06-28 23:55）
+
+| 时间 | 动作 |
+|------|------|
+| 23:34 | 派子 agent #1 研究"个人无实名收款" |
+| 23:39 | 收到研究报告（319 行，方案 = NOWPayments + Creem.io + 国内 GitHub Issue 半手动）|
+| 23:42 | 写 `crypto_invoice.py` NOWPayments 集成模块 |
+| 23:45 | sponsor.html 升级为双轨（海外 Creem / 全球 NOWPayments / 国内 GitHub Issue 半手动）|
+| 23:48 | 推到 ai-startup-kit + promptdrop 仓库 |
+| 23:50 | GitHub Pages 验证：sponsor.html 显示 3 种支付方式 |
+
+## 📋 现在用户下单的真实路径
+
+中国大陆用户：
+1. 访问 https://snail2sky.github.io/ai-startup-kit/sponsor.html
+2. 选档（¥9.9 / ¥29.9 / ¥99+）
+3. 点"🇨🇳 当前唯一通道 → 新建 Issue"
+4. 填邮箱 + SKU + 微信
+5. 客服 5 分钟内联系 → 发收款码 → 付款 → 发货
+
+海外用户（暂未开通，等 API key）：
+- Creem.io 信用卡通道
+- NOWPayments 加密货币通道
