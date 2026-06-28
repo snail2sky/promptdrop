@@ -5,6 +5,23 @@
 🌐 **在线访问**：[racial-cut-lived-trained.trycloudflare.com](https://racial-cut-lived-trained.trycloudflare.com)
 📦 **GitHub**：[github.com/snail2sky/promptdrop](https://github.com/snail2sky/promptdrop)
 📝 **创业日志**：[Issue #1 — 从 0 到上线](https://github.com/snail2sky/promptdrop/issues/1)
+📊 **每日数据**：[Issue #2 — 2026-06-28 报告](https://github.com/snail2sky/promptdrop/issues/2)
+
+---
+
+## 🌟 同源项目 · 1000元创业实战方案
+
+> 这是另一个更完整的项目，PromptDrop 是它的子集/实验版
+
+- 📦 **[snail2sky/ai-startup-kit](https://github.com/snail2sky/ai-startup-kit)** — 8个产品 + 完整SOP + 已部署到 GitHub Pages
+- 🌐 **[snail2sky.github.io/ai-startup-kit/](https://snail2sky.github.io/ai-startup-kit/)** — 在线访问
+- 💰 **¥99 全套早鸟价** · 含 SOP / 文案包 / 引流笔记 / 副业项目库
+
+**两个项目的差别**：
+- `ai-startup-kit` —— 工具包（PDF + SOP，重在"知道怎么做"）
+- `promptdrop`（本仓库）—— 实际开店（落地页 + 收款 + 发货，重在"今天就开始卖"）
+
+> **建议路径**：先看 ai-startup-kit 学方法，再来 promptdrop 看实战。
 
 ---
 
