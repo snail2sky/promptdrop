@@ -13,98 +13,40 @@
       min-height: 100vh;
       padding: 40px 20px;
     }
-    .box {
-      max-width: 480px;
-      margin: 0 auto;
-      background: #1a1f2b;
-      border: 1px solid #2a3142;
-      border-radius: 12px;
-      padding: 32px;
-    }
+    .box { max-width: 480px; margin: 0 auto; background: #1a1f2b; border: 1px solid #2a3142; border-radius: 12px; padding: 32px; }
     h1 { font-size: 20px; margin-bottom: 16px; color: #fff; }
-    .summary {
-      background: #0f1115;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 24px;
-    }
-    .summary .row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-    .summary .row.total {
-      font-size: 20px;
-      font-weight: 700;
-      color: #06d6a0;
-      border-top: 1px solid #2a3142;
-      padding-top: 12px;
-      margin-top: 12px;
-    }
+    .summary { background: #0f1115; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+    .summary .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+    .summary .row.total { font-size: 20px; font-weight: 700; color: #06d6a0; border-top: 1px solid #2a3142; padding-top: 12px; margin-top: 12px; }
+    .qr-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .qr-tabs button { flex: 1; padding: 10px; background: #2a3142; color: #a0a8b8; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+    .qr-tabs button.active { background: #06d6a0; color: #0f1115; font-weight: 700; }
     .qr {
-      width: 240px;
-      height: 240px;
-      margin: 16px auto;
-      background: #fff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 14px;
+      width: 240px; height: 240px; margin: 16px auto;
+      background: #fff; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: #333; font-size: 14px; position: relative;
     }
-    .qr-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .qr-tabs button {
-      flex: 1;
-      padding: 10px;
-      background: #2a3142;
-      color: #a0a8b8;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .qr-tabs button.active {
-      background: #06d6a0;
-      color: #0f1115;
-      font-weight: 700;
-    }
+    .qr img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+    .qr-placeholder { text-align: center; color: #888; padding: 12px; }
     .notice {
-      background: #2a3142;
-      border-left: 3px solid #ffd166;
-      padding: 12px;
-      border-radius: 4px;
-      font-size: 13px;
-      color: #ffd166;
-      margin: 16px 0;
+      background: #2a3142; border-left: 3px solid #ffd166;
+      padding: 12px; border-radius: 4px; font-size: 13px; color: #ffd166; margin: 16px 0;
     }
     .notice b { color: #fff; }
     .cs {
-      background: #06d6a0;
-      color: #0f1115;
-      padding: 12px;
-      border-radius: 6px;
-      text-align: center;
-      font-weight: 700;
-      margin-top: 16px;
+      background: #06d6a0; color: #0f1115; padding: 12px;
+      border-radius: 6px; text-align: center; font-weight: 700; margin-top: 16px;
     }
-    .back {
-      display: block;
-      text-align: center;
-      margin-top: 16px;
-      color: #a0a8b8;
-      font-size: 13px;
-      text-decoration: none;
+    .back { display: block; text-align: center; margin-top: 16px; color: #a0a8b8; font-size: 13px; text-decoration: none; }
+    .demo-banner {
+      background: #ef476f; color: #fff; text-align: center;
+      padding: 8px; border-radius: 6px; margin-bottom: 16px; font-size: 12px;
     }
   </style>
 </head>
 <body>
   <div class="box">
+    <div class="demo-banner">🧪 DEMO 模式 · 当前为占位二维码，请联系客服完成真实付款</div>
     <h1>📦 订单确认</h1>
     <div class="summary" id="summary">加载中...</div>
 
@@ -114,13 +56,19 @@
     </div>
 
     <div class="qr" id="qrArea">
-      <span id="qrTip">微信扫码支付</span>
+      <div class="qr-placeholder" id="qrPlaceholder">
+        <div>📱</div>
+        <div style="margin-top:8px;">微信收款码</div>
+        <div style="font-size:11px;margin-top:4px;">（待运营者上传）</div>
+      </div>
     </div>
 
     <div class="notice">
-      <b>⚠️ 付款后请截图发送给客服</b><br>
-      客服会在 <b>10 分钟内</b>核实并发送下载链接<br>
-      订单号：<span id="orderId">--</span>
+      <b>💬 当前阶段付款流程：</b><br>
+      1. 截图保存上方二维码（运营者上传后）<br>
+      2. 微信扫码 → 付款 ¥<span id="payAmount">--</span><br>
+      3. <b>付款截图发给客服</b>：promptdrop_cs<br>
+      4. 客服 10 分钟内发下载链接
     </div>
 
     <div class="cs">
@@ -131,35 +79,55 @@
   </div>
 
   <script>
-    // 解析 URL 参数
     const params = new URLSearchParams(location.search);
     const id = params.get('id') || 'PD-001';
     const title = params.get('title') || '小红书爆款标题 7 套模板';
     const price = parseFloat(params.get('price') || '9.9');
-
-    // 生成订单号（时间戳后 6 位）
     const orderId = String(Date.now()).slice(-6);
-    document.getElementById('orderId').textContent = orderId;
 
-    // 渲染订单
+    document.getElementById('orderId')?.textContent || (document.getElementById('orderId') = {});
+    document.getElementById('payAmount').textContent = price;
+
     document.getElementById('summary').innerHTML = `
       <div class="row"><span>商品</span><span>${decodeURIComponent(title)}</span></div>
       <div class="row"><span>SKU</span><span>${id}</span></div>
+      <div class="row"><span>订单号</span><span>${orderId}</span></div>
       <div class="row total"><span>应付</span><span>¥${price}</span></div>
     `;
 
-    // 切换二维码（v1 用占位）
+    // 把订单号写到 notice
+    const noticeEl = document.querySelector('.notice');
+    if (!document.getElementById('orderId')) {
+      const span = document.createElement('span');
+      span.id = 'orderId';
+      span.textContent = orderId;
+      noticeEl.insertAdjacentHTML('beforeend', `<br>订单号：<b>${orderId}</b>（付款备注订单号）`);
+    }
+
     function showQR(type, btn) {
       document.querySelectorAll('.qr-tabs button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const tip = type === 'wx' ? '微信扫码支付' : '支付宝扫码支付';
-      document.getElementById('qrTip').textContent = tip + '（v1 占位图）';
+      const placeholder = document.getElementById('qrPlaceholder');
+      placeholder.innerHTML = `<div>${type === 'wx' ? '💚' : '💙'}</div>
+        <div style="margin-top:8px;">${type === 'wx' ? '微信收款码' : '支付宝收款码'}</div>
+        <div style="font-size:11px;margin-top:4px;">（待运营者上传）</div>`;
+      // 检查是否有真实图片
+      const img = new Image();
+      img.onload = () => {
+        document.getElementById('qrArea').innerHTML = `<img src="assets/${type === 'wx' ? 'wechat' : 'alipay'}.png" alt="${type} QR">`;
+      };
+      img.onerror = () => {};
+      img.src = `assets/${type === 'wx' ? 'wechat' : 'alipay'}.png?ts=${Date.now()}`;
     }
 
-    // 埋点：上报加购/订单
+    // 埋点
     try {
-      console.log('[PromptDrop] 订单创建', { id, title, price, orderId, ts: Date.now() });
-      localStorage.setItem('pd_last_order', JSON.stringify({ id, title, price, orderId, ts: Date.now() }));
+      console.log('[PromptDrop] 订单创建', { id, title, price, orderId, ts: Date.now(), ua: navigator.userAgent, ref: document.referrer });
+      const orders = JSON.parse(localStorage.getItem('pd_orders') || '[]');
+      orders.push({ id, title, price, orderId, ts: Date.now() });
+      localStorage.setItem('pd_orders', JSON.stringify(orders));
+      // 同时上报一个最简单的 pageview
+      fetch('/api/track', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({event:'order_created', sku:id, price, orderId, ts: Date.now()}) }).catch(()=>{});
     } catch (e) {}
   </script>
 </body>

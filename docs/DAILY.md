@@ -23,3 +23,8 @@
 - 现状：MVP 已交付且本地验收通过
 - 卡点：尚未发布到公网，无流量
 - 下一步：立即推公网 + 同步推广
+### 23:00 更新
+- ✅ GitHub 仓库：https://github.com/snail2sky/promptdrop
+- ✅ 公网隧道：https://obligation-cape-luis-rows.trycloudflare.com
+- ✅ 落地页公网验证：HTTP 200
+- ✅ 子 agent 监控：每 30 分钟一次，job_id=181812f6c748

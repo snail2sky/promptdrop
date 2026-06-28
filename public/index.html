@@ -294,9 +294,22 @@
         <p class="desc">${s.desc}</p>
         <div class="price">¥${s.price}<small>¥${s.original}</small></div>
         <div class="meta">已售 ${s.sold} 份 · SKU: ${s.id}</div>
-        <a class="btn btn-primary" href="order.html?id=${s.id}&title=${encodeURIComponent(s.title)}&price=${s.price}">立即购买</a>
+        <a class="btn btn-primary" href="order.html?id=${s.id}&title=${encodeURIComponent(s.title)}&price=${s.price}" onclick="trackClick('${s.id}', '${s.price}')">立即购买</a>
       </div>
     `).join('');
+
+    // 埋点
+    function track(event, extra) {
+      try {
+        fetch('/api/track', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({event, ts: Date.now(), ref: document.referrer, ua: navigator.userAgent.slice(0, 100), ...extra})
+        }).catch(()=>{});
+      } catch(e){}
+    }
+    function trackClick(sku, price) { track('click_buy', {sku, price: parseFloat(price)}); }
+    track('pageview_landing', {});
   </script>
 </body>
 </html>
