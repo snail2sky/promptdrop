@@ -39,6 +39,33 @@ def log_event(event_type, payload):
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def ping_search_engines():
+    """主动 ping 搜索引擎，让它们最快收录"""
+    import urllib.request
+    import urllib.parse
+    url = "https://query-dividend-transparent-nominated.trycloudflare.com/index.html"
+    results = {}
+    # Bing
+    try:
+        ping_url = f"https://www.bing.com/ping?sitemap={urllib.parse.quote('https://query-dividend-transparent-nominated.trycloudflare.com/sitemap.xml')}"
+        req = urllib.request.Request(ping_url, headers={"User-Agent": "PromptDrop/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            results["bing"] = r.status
+    except Exception as e:
+        results["bing"] = f"err: {e}"
+    # IndexNow (Bing/Yandex/Google 兼容)
+    try:
+        # 准备一个 indexnow key（这里用一个固定的，方便复现）
+        idx_key = "promptdrop2024"
+        idx_url = f"https://api.indexnow.org/indexnow?url={urllib.parse.quote(url)}&key={idx_key}"
+        req = urllib.request.Request(idx_url, headers={"User-Agent": "PromptDrop/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            results["indexnow"] = r.status
+    except Exception as e:
+        results["indexnow"] = f"err: {e}"
+    return results
+
+
 def load_tokens():
     if not TOKENS_FILE.exists():
         return []
@@ -136,6 +163,38 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps(stats, ensure_ascii=False, indent=2).encode())
+            return
+
+        if path == "/api/ping":
+            # 主动推送搜索引擎
+            results = ping_search_engines()
+            log_event("seo_ping", {"results": results})
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"ok": True, "results": results}, ensure_ascii=False).encode())
+            return
+
+        if path == "/api/seo-meta":
+            # 返回 SEO 元数据（方便外部工具抓取）
+            meta = {
+                "site": "PromptDrop",
+                "url": "https://query-dividend-transparent-nominated.trycloudflare.com",
+                "title": "PromptDrop — 即买即用的 AI 提效模板小店",
+                "description": "9.9 元起，把 3 小时调好的 Prompt 模板带回家",
+                "keywords": ["AI prompt", "小红书爆款", "跨境选品", "周报生成", "面试", "论文降重"],
+                "skus": [
+                    {"id": "PD-001", "name": "小红书爆款标题 7 套模板", "price": 9.9},
+                    {"id": "PD-002", "name": "跨境选品调研 Prompt 包", "price": 19.9},
+                    {"id": "PD-003", "name": "周报/OKR 自动生成器", "price": 9.9},
+                    {"id": "PD-004", "name": "面试问题生成器（双向版）", "price": 14.9},
+                    {"id": "PD-005", "name": "论文降重+润色 Prompt 工具箱", "price": 29.9}
+                ]
+            }
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(meta, ensure_ascii=False, indent=2).encode())
             return
 
         # 下载页
