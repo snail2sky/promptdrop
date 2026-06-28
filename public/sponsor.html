@@ -18,6 +18,18 @@
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .hero p { color: #a0a8b8; max-width: 600px; margin: 0 auto 24px; }
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .tiers-featured {
+      transform: scale(1.05);
+      box-shadow: 0 0 24px rgba(255, 209, 102, 0.3);
+      z-index: 1;
+      position: relative;
+    }
     .tier {
       background: #1a1f2b; border: 1px solid #2a3142; border-radius: 12px;
       padding: 24px; margin-bottom: 16px; transition: border-color .2s;
@@ -30,6 +42,10 @@
     .tier ul { list-style: none; padding: 0; margin-bottom: 16px; }
     .tier li { padding: 6px 0; font-size: 14px; color: #e6e6e6; }
     .tier li::before { content: "✅ "; color: #06d6a0; }
+    @media (max-width: 768px) {
+      .tiers { grid-template-columns: 1fr; }
+      .tiers-featured { transform: none; }
+    }
     .btn {
       display: block; padding: 14px; background: #ffd166; color: #0f1115;
       font-weight: 700; border: none; border-radius: 8px; cursor: pointer;
@@ -60,6 +76,7 @@
       <p>选一个档位，转账任意加密货币或加微信支付。<br>5 分钟内通过验证 → 立即解锁全部 SKU + 终身免费更新</p>
     </div>
 
+    <div class="tiers">
     <div class="tier">
       <h3>🎁 体验档</h3>
       <div class="price">¥9.9</div>
@@ -72,7 +89,7 @@
       <a href="#pay" class="btn">选这个档</a>
     </div>
 
-    <div class="tier featured">
+    <div class="tier featured tiers-featured">
       <h3>⭐ 推荐档</h3>
       <div class="price">¥29.9 <small style="font-size:14px; color:#a0a8b8;">（5 个 SKU 平均 6 元）</small></div>
       <div class="desc">最划算 · 一次拿完所有 prompt</div>
@@ -97,39 +114,17 @@
       </ul>
       <a href="#pay" class="btn">选这个档</a>
     </div>
+    </div>
 
     <div id="pay" class="payment-methods">
       <h2 style="margin-bottom:20px;">💳 怎么付？</h2>
 
-      <div style="background:#06d6a0; color:#0f1115; padding:12px; border-radius:8px; margin-bottom:16px; text-align:center;">
-        <b>🎉 新通道：</b>海外用户现在可用<b>信用卡 / Apple Pay / Google Pay</b>（Creem.io 接入中）<br>
-        <a href="#crypto" style="color:#0f1115;">国内用户 → 看下方</a>
-      </div>
-
-      <div class="method">
-        <h4>🌍 海外用户：信用卡 / Apple Pay</h4>
-        <code style="opacity:0.5;">[Creem.io 通道接入中 · 完成后会自动跳转]</code>
-        <div class="tip">
-          <b>支持</b>：Visa / Master / Amex / Apple Pay / Google Pay · 全球 200+ 国家
-          <br><b>费率</b>：5% + $0.50（9.9 元到手约 ¥6.1）
-          <br><b>进度</b>：Creem.io 商户注册中，预计 24h 内上线。<a href="https://github.com/snail2sky/promptdrop/issues" target="_blank">关注 Issue 通知</a>
-        </div>
-      </div>
-
-      <div class="method">
-        <h4>💎 全球用户：加密货币（USDT-TRC20 / BTC / ETH）</h4>
-        <code style="opacity:0.5;">[NOWPayments 通道集成代码就绪 · 申请 API key 中]</code>
-        <div class="tip">
-          <b>支持</b>：USDT-TRC20 / BTC / ETH / 200+ 币种
-          <br><b>费率</b>：0.4-0.5%（9.9 元到手约 ¥9.5）
-          <br><b>进度</b>：NOWPayments API 集成完成（<code>crypto_invoice.py</code>），等 API key 激活。<a href="https://github.com/snail2sky/promptdrop/issues" target="_blank">关注 Issue</a>
-        </div>
-      </div>
-
-      <div class="method" id="crypto">
-        <h4>🇨🇳 当前唯一通道：3 步搞定下单（不需要 GitHub 账号）</h4>
-        <code>📝 填表单 → 加客服微信 → 发收款码 → 付款 → 发货</code>
-        <div class="tip">
+      <!-- 🇨🇳 国内用户通道：提到最顶部 + 橙色边框 + badge -->
+      <div style="background:#1a1f2b; border:3px solid #ff6b35; border-radius:12px; padding:20px; margin-bottom:20px; position:relative;">
+        <div style="position:absolute; top:-12px; left:16px; background:#ff6b35; color:#fff; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700;">🇨🇳 国内用户唯一可用通道</div>
+        <h4 style="color:#ffd166; margin:8px 0 12px;">3 步搞定下单（不需要 GitHub 账号）</h4>
+        <code style="background:#0f1115; color:#06d6a0; padding:6px 10px; border-radius:6px; display:block; margin-bottom:12px;">📝 填表单 → 加客服微信 → 发收款码 → 付款 → 发货</code>
+        <div style="color:#e6e6e6; font-size:14px;">
           <b style="color:#06d6a0;">🟢 极简流程 · 全程 60 秒下单</b>
           <ol style="margin-top:8px; padding-left:20px;">
             <li><b>填下方表单</b>：选档位 + 留邮箱 + 留微信号</li>
@@ -146,6 +141,33 @@
           </div>
         </div>
       </div>
+
+      <!-- 海外用户：标记为"准备中" -->
+      <div style="background:#0f1115; border:1px dashed #2a3142; border-radius:12px; padding:16px; margin-bottom:16px; opacity:0.6;">
+        <h4 style="color:#a0a8b8; margin:0 0 8px;">🌍 海外用户通道（接入中）</h4>
+        <div style="font-size:13px; color:#6a7284;">
+          · 信用卡 / Apple Pay / Google Pay — Creem.io 接入中<br>
+          · 加密货币（USDT-TRC20 / BTC / ETH）— NOWPayments 集成代码就绪<br>
+          · <b style="color:#a0a8b8;">当前阶段：仅支持中国大陆用户</b>
+        </div>
+      </div>
+
+      <!-- 旧的方法块保留（兼容性） -->
+      <details style="margin-top:16px;">
+        <summary style="cursor:pointer; color:#a0a8b8; font-size:13px;">📜 查看详细通道状态（开发进度）</summary>
+        <div style="margin-top:12px;">
+          <div class="method">
+            <h4>🌍 海外用户：信用卡 / Apple Pay</h4>
+            <code style="opacity:0.5;">[Creem.io 通道接入中 · 完成后会自动跳转]</code>
+            <div class="tip"><b>支持</b>：Visa / Master / Amex / Apple Pay / Google Pay · 全球 200+ 国家<br><b>费率</b>：5% + $0.50</div>
+          </div>
+          <div class="method">
+            <h4>💎 全球用户：加密货币（USDT-TRC20 / BTC / ETH）</h4>
+            <code style="opacity:0.5;">[NOWPayments 通道集成代码就绪 · 申请 API key 中]</code>
+            <div class="tip"><b>支持</b>：USDT-TRC20 / BTC / ETH / 200+ 币种<br><b>费率</b>：0.4-0.5%</div>
+          </div>
+        </div>
+      </details>
 
       <div class="verify" id="form">
         <h3 style="color:#fff; margin-bottom:12px;">📝 第 1 步 · 先填这个（30 秒）</h3>
